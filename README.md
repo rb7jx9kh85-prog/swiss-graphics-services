@@ -1,9 +1,27 @@
 # Swiss Graphic Services
 
-Refonte en français, noir / or / blanc. Site statique sans dépendance, prêt pour Vercel.
+Refonte française, noir / or / blanc. Site statique, sans dépendance ni installation.
 
-## Développement
+## Aperçu local
 
-Lancer `python3 -m http.server 8000`, puis ouvrir http://localhost:8000.
+Depuis ce dossier : `python3 -m http.server 8000`, puis ouvrir http://localhost:8000.
 
-Les médias repris du site source sont stockés dans `assets/`. Le formulaire prépare un message WhatsApp : il n'envoie aucune demande en arrière-plan.
+## Vercel
+
+Importer ce dépôt, nommer le projet `swissgraphicservices`, sélectionner **Other**, conserver le dossier racine et laisser les commandes de build et d'installation vides. Le site est servi depuis la racine.
+
+## Fonctionnalités
+
+- Galerie filtrable, agrandissement des images et vidéo à la demande.
+- Fiches de prestations, FAQ, navigation mobile et animations au défilement.
+- Respect de la préférence de réduction des mouvements et navigation clavier.
+- Formulaire qui prépare un message WhatsApp ; aucune demande n'est envoyée avant la validation dans WhatsApp.
+- Métadonnées SEO et données structurées avec les coordonnées publiées par l'atelier.
+
+## Médias
+
+Les images et la vidéo proviennent du site swissgraphicservices.com. Les images sont optimisées en WebP et la vidéo est compressée en MP4, audio conservé. Les simulations et les images d'inspiration sont identifiées dans la galerie. Les fichiers utiles sont inclus dans `assets/`.
+
+## Vérification
+
+Syntaxe JavaScript, JSON Vercel, présence des médias, ancres et identifiants HTML vérifiés. Le rendu en navigateur n'a pas pu être vérifié dans cet environnement.
