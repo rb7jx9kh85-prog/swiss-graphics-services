@@ -1,6 +1,6 @@
 # Swiss Graphic Services
 
-Refonte française, noir / or / blanc. Site statique, sans dépendance ni installation.
+Refonte éditoriale en français, blanc cassé / noir / or discret. Site statique, sans dépendance ni installation.
 
 ## Aperçu local
 
@@ -12,7 +12,7 @@ Importer ce dépôt, nommer le projet `swissgraphicservices`, sélectionner **Ot
 
 ## Fonctionnalités
 
-- Galerie filtrable, agrandissement des images et vidéo à la demande.
+- Portfolio asymétrique, agrandissement des projets et vidéo à la demande.
 - Fiches de prestations, FAQ, navigation mobile et animations au défilement.
 - Respect de la préférence de réduction des mouvements et navigation clavier.
 - Formulaire qui prépare un message WhatsApp ; aucune demande n'est envoyée avant la validation dans WhatsApp.
@@ -20,7 +20,7 @@ Importer ce dépôt, nommer le projet `swissgraphicservices`, sélectionner **Ot
 
 ## Médias
 
-Les images et la vidéo proviennent du site swissgraphicservices.com. Les images sont optimisées en WebP et la vidéo est compressée en MP4, audio conservé. Les simulations et les images d'inspiration sont identifiées dans la galerie. Les fichiers utiles sont inclus dans `assets/`.
+Les images et la vidéo proviennent du site swissgraphicservices.com. Les images sont optimisées en WebP et la vidéo est compressée en MP4, audio conservé. Le visuel de design covering est identifié comme une inspiration. Les photographies de pose sont au premier plan. Les fichiers utiles sont inclus dans `assets/`.
 
 ## Vérification
 
