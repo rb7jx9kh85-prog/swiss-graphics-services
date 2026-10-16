@@ -1,0 +1,30 @@
+import { readdir, readFile, writeFile, mkdir, cp, rm } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const out = resolve(root, 'dist');
+const hostname = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
+const configured = process.env.SITE_URL || (hostname ? `https://${hostname}` : 'http://localhost:8000');
+const origin = new URL(configured).origin;
+if (!/^https?:$/.test(new URL(origin).protocol)) throw new Error('SITE_URL must use HTTP or HTTPS');
+const files = await readdir(root);
+const pages = files.filter(f => f === 'index.html' || /^covering-[a-z-]+\.html$/.test(f)).sort();
+await rm(out, { recursive: true, force: true });
+await mkdir(out, { recursive: true });
+const paths = [];
+for (const page of pages) {
+  const path = page === 'index.html' ? '/' : '/' + page.replace(/\.html$/, '');
+  const canonical = new URL(path, origin).href;
+  let html = await readFile(resolve(root, page), 'utf8');
+  html = html.replace(/<link rel="canonical" data-canonical href="[^"]+">/, `<link rel="canonical" href="${canonical}">`);
+  html = html.replace(/<meta property="og:image" content="([^"]+)">/, (_, image) => `<meta property="og:image" content="${new URL(image, origin).href}">`);
+  html = html.replace('<meta property="og:type"', `<meta property="og:url" content="${canonical}"><meta property="og:type"`);
+  await writeFile(resolve(out, page), html);
+  paths.push(canonical);
+}
+for (const name of ['style.css', 'app.js', 'favicon.svg']) await cp(resolve(root, name), resolve(out, name));
+await cp(resolve(root, 'assets'), resolve(out, 'assets'), { recursive: true });
+const escapeXml = s => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
+await writeFile(resolve(out, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + paths.map(url => `  <url><loc>${escapeXml(url)}</loc></url>`).join('\n') + '\n</urlset>\n');
+await writeFile(resolve(out, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
+console.log(`Built ${pages.length} pages, assets, canonical URLs and sitemap. Output: dist/`);

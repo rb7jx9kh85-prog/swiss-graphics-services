@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "lausanne",
+    "name": "Lausanne"
+  },
+  {
+    "slug": "renens",
+    "name": "Renens"
+  },
+  {
+    "slug": "crissier",
+    "name": "Crissier"
+  },
+  {
+    "slug": "ecublens",
+    "name": "Ecublens"
+  },
+  {
+    "slug": "prilly",
+    "name": "Prilly"
+  },
+  {
+    "slug": "pully",
+    "name": "Pully"
+  },
+  {
+    "slug": "lutry",
+    "name": "Lutry"
+  },
+  {
+    "slug": "epalinges",
+    "name": "Épalinges"
+  },
+  {
+    "slug": "le-mont-sur-lausanne",
+    "name": "Le Mont-sur-Lausanne"
+  },
+  {
+    "slug": "romanel-sur-lausanne",
+    "name": "Romanel-sur-Lausanne"
+  },
+  {
+    "slug": "cheseaux-sur-lausanne",
+    "name": "Cheseaux-sur-Lausanne"
+  },
+  {
+    "slug": "cugy",
+    "name": "Cugy"
+  },
+  {
+    "slug": "morrens",
+    "name": "Morrens"
+  },
+  {
+    "slug": "bottens",
+    "name": "Bottens"
+  },
+  {
+    "slug": "echallens",
+    "name": "Échallens"
+  },
+  {
+    "slug": "bretigny-sur-morrens",
+    "name": "Bretigny-sur-Morrens"
+  }
+]

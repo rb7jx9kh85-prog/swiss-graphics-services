@@ -3,7 +3,6 @@ const menu=document.querySelector('.menu'),nav=document.querySelector('#nav');
 menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');nav.classList.toggle('open',open)});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Ouvrir le menu');nav.classList.remove('open')}));
 if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('js-motion');const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))}
-let tick=false;function progress(){const total=document.documentElement.scrollHeight-innerHeight;document.querySelector('.progress').style.width=(total>0?scrollY/total*100:0)+'%';tick=false}addEventListener('scroll',()=>{if(!tick){requestAnimationFrame(progress);tick=true}},{passive:true});progress();
 const modal=document.querySelector('#modal'),content=document.querySelector('#modal-content');let previousFocus;
 function openModal(){previousFocus=document.activeElement;modal.showModal();document.body.classList.add('modal-open');modal.querySelector('.modal-close').focus()}
 function closeModal(){modal.close()}
